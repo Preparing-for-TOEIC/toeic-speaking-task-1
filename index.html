@@ -135,7 +135,7 @@
       font-size: 14px;
       line-height: 1.6;
       white-space: pre-wrap;
-      font-style: italic;
+      font-: italic;
     }
 
     .instruction{
@@ -409,12 +409,16 @@
   background:#ffffff;
   border:1px solid var(--border);
   border-radius: var(--radiusSm);
-  padding: 8px 12px;   /* ⬅ reduced top/bottom padding */
+  padding: 8px 12px;
   white-space: pre-wrap;
   font-size: 14px;
   line-height: 1.55;
   color: var(--text);
-  margin-top: 4px;     /* ⬅ reduced gap from title */
+
+  margin: 0;               /* 🔴 important */
+}
+    .promptHead + .draftBox{
+  margin-top: 6px;         /* matches Question layout exactly */
 }
   </style>
 </head>
