@@ -90,12 +90,13 @@
       opacity: .95;
     }
     .promptInner{ padding-left: 10px; }
+
     .promptHead{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      margin-bottom: 6px;
+      margin-bottom: 0; /* ✅ tighter: spacing controlled below */
     }
     .promptTitle{
       margin:0;
@@ -127,25 +128,41 @@
     .state.recording .dot{ background:#ef4444; }
     .state.done .dot{ background:#16a34a; }
 
-    .promptInner p{ margin: 0; }
-    .promptInner p + p{ margin-top: 6px; }
+    /* ✅ Normalize vertical rhythm inside prompt */
+    .promptInner > *{
+      margin: 0;
+    }
+    .promptInner > * + *{
+      margin-top: 6px; /* consistent spacing between items */
+    }
 
     .promptText{
       color: var(--text);
       font-size: 14px;
       line-height: 1.6;
       white-space: pre-wrap;
-      font-: italic;
+      font-style: italic; /* ✅ fixed typo (was font-: italic) */
     }
 
     .instruction{
-      margin-top: 6px;
       padding: 10px;
       border-radius: var(--radiusSm);
       border:1px solid rgba(37,99,235,.20);
       background: rgba(255,255,255,.75);
       font-size: 13px;
       color:#1f3b7a;
+    }
+
+    /* ✅ Framed box like "Question" */
+    .draftBox{
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius: var(--radiusSm);
+      padding: 8px 12px;
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
     }
 
     /* Panel */
@@ -404,22 +421,6 @@
       flex-wrap:wrap;
       justify-content:flex-end;
     }
-    /* ✅ Framed box like "Question" */
-.draftBox{
-  background:#ffffff;
-  border:1px solid var(--border);
-  border-radius: var(--radiusSm);
-  padding: 8px 12px;
-  white-space: pre-wrap;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--text);
-
-  margin: 0;               /* 🔴 important */
-}
-    .promptHead + .draftBox{
-  margin-top: 6px;         /* matches Question layout exactly */
-}
   </style>
 </head>
 
@@ -444,10 +445,9 @@
               </div>
             </div>
 
-            <div class="draftBox" id="readTextBox">
-Please note that the office will be closed on Friday afternoon for scheduled maintenance.
+            <div class="draftBox" id="readTextBox">Please note that the office will be closed on Friday afternoon for scheduled maintenance.
 Employees are asked to complete any urgent tasks before noon.</div>
-            
+
             <div class="instruction">
               ⚠️ You have <strong>45 seconds</strong> to prepare (read silently). You will then have <strong>45 seconds</strong> to read the text aloud.
             </div>
@@ -488,7 +488,6 @@ Employees are asked to complete any urgent tasks before noon.</div>
         </div>
         <div class="savedList" id="savedList"></div>
 
-        <!-- ✅ Return button correctly placed inside Saved takes area -->
         <div class="savedFooter">
           <a id="returnBtn" class="btnOutline btnOutlineReturn" href="#">↩️ Return to the module</a>
         </div>
