@@ -404,6 +404,18 @@
       flex-wrap:wrap;
       justify-content:flex-end;
     }
+    /* ✅ Framed box like "Question" */
+.draftBox{
+  background:#ffffff;
+  border:1px solid var(--border);
+  border-radius: var(--radiusSm);
+  padding: 12px;
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-top: 6px;
+}
   </style>
 </head>
 
@@ -430,8 +442,7 @@
 
             <div class="draftBox" id="readTextBox">
 Please note that the office will be closed on Friday afternoon for scheduled maintenance.
-Employees are asked to complete any urgent tasks before noon.
-</div>
+Employees are asked to complete any urgent tasks before noon.</div>
             
             <div class="instruction">
               ⚠️ You have <strong>45 seconds</strong> to prepare (read silently). You will then have <strong>45 seconds</strong> to read the text aloud.
